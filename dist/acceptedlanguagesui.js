@@ -70,6 +70,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	var page = acceptedlanguages.lib.page;
 	var relevant = acceptedlanguages.lib.relevant;
 
+	function createButton(text, cssClass) {
+	  var button = document.createElement('button');
+	  button.setAttribute('type', 'button');
+	  button.setAttribute('cssClass', cssClass);
+	  button.innerHTML = text;
+	  return button;
+	}
+
 	function display() {
 	  var _ref = arguments[0] === undefined ? {} : arguments[0];
 
@@ -79,8 +87,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var elementId = _ref$elementId === undefined ? 'acceptedlanguagesui' : _ref$elementId;
 	  var _ref$elementClass = _ref.elementClass;
 	  var elementClass = _ref$elementClass === undefined ? 'acceptedlanguagesui' : _ref$elementClass;
+	  var _ref$elementClassShow = _ref.elementClassShow;
+	  var elementClassShow = _ref$elementClassShow === undefined ? 'show' : _ref$elementClassShow;
+	  var _ref$elementClassHide = _ref.elementClassHide;
+	  var elementClassHide = _ref$elementClassHide === undefined ? 'hide' : _ref$elementClassHide;
+	  var _ref$buttonYesClass = _ref.buttonYesClass;
+	  var buttonYesClass = _ref$buttonYesClass === undefined ? 'yes' : _ref$buttonYesClass;
+	  var _ref$buttonNoClass = _ref.buttonNoClass;
+	  var buttonNoClass = _ref$buttonNoClass === undefined ? 'no' : _ref$buttonNoClass;
 	  var _ref$linkAttributeForMessage = _ref.linkAttributeForMessage;
 	  var linkAttributeForMessage = _ref$linkAttributeForMessage === undefined ? 'data-message' : _ref$linkAttributeForMessage;
+	  var _ref$linkAttributeForYes = _ref.linkAttributeForYes;
+	  var linkAttributeForYes = _ref$linkAttributeForYes === undefined ? 'data-yes' : _ref$linkAttributeForYes;
+	  var _ref$linkAttributeForNo = _ref.linkAttributeForNo;
+	  var linkAttributeForNo = _ref$linkAttributeForNo === undefined ? 'data-no' : _ref$linkAttributeForNo;
 
 	  var root = rooter.getRoot();
 
@@ -90,15 +110,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return;
 	  }
 	  var href = page.getHrefForLanguage(relevantLanguage);
-	  var message = page.getLinkForLanguage(relevantLanguage).getAttribute(linkAttributeForMessage);
+	  var link = page.getLinkForLanguage(relevantLanguage);
+	  var message = link.getAttribute(linkAttributeForMessage);
+	  var yes = link.getAttribute(linkAttributeForYes);
+	  var no = link.getAttribute(linkAttributeForNo);
 
 	  var document = root.document;
 	  var body = document.body;
 
 	  var element = document.querySelector('#' + elementId) || document.createElement(elementTag);
 	  element.setAttribute('id', elementId);
-	  element.setAttribute('class', elementClass);
-	  element.innerHTML = '<a href="' + href + '">' + message + '</a>';
+	  element.className = elementClass + ' ' + elementClassShow;
+	  element.innerHTML = '' + message;
+
+	  var buttonNo = createButton(no, href, buttonNoClass);
+	  buttonNo.onclick = function () {
+	    element.className = elementClass + ' ' + elementClassHide;
+	  };
+	  element.appendChild(buttonNo);
+
+	  var buttonYes = createButton(yes, href, buttonYesClass);
+	  buttonYes.onclick = function () {
+	    window.location.href = href;
+	  };
+	  element.appendChild(buttonYes);
 
 	  if (body.hasChildNodes()) {
 	    body.insertBefore(element, body.firstChild);
