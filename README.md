@@ -14,6 +14,12 @@ Dependent on [acceptedlanguages.js](https://github.com/leighmcculloch/acceptedla
 bower install acceptedlangaugesui
 ```
 
+### NPM
+
+```bash
+npm install acceptedlanguagesui --save
+```
+
 ### Manual
 
 Download [acceptedlanguages.min.js](https://github.com/leighmcculloch/acceptedlanguages.js/blob/master/dist/acceptedlanguages.min.js) and [acceptedlanguagesui.min.js](dist/acceptedlanguagesui.min.js).
