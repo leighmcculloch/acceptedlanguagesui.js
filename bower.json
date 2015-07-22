@@ -16,7 +16,7 @@
     "amd"
   ],
   "dependencies": {
-    "acceptedlanguages": "~0.0.1"
+    "acceptedlanguages": "~0.0.2"
   },
   "keywords": [
     "language",
