@@ -1,6 +1,6 @@
 {
   "name": "acceptedlanguagesui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A simple UI that offers your website to your visitor in its alternate languages.",
   "main": "acceptedlanguagesui.js",
   "scripts": {
