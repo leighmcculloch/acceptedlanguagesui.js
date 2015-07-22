@@ -8,21 +8,23 @@
   padding: 8px;
   width: 100%;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(200, 200, 200, 0.999);
-  box-shadow: 0 1px 5px rgba(200, 200, 200, 0.999);
-}
-.acceptedlanguagesui a {
-  color: inherit;
-  text-decoration: none;
-}
-.acceptedlanguagesui a:hover {
-  text-decoration: underline;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 .acceptedlanguagesui button {
   display: inline-block;
   margin-left: 8px;
   font-size: inherit;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+.acceptedlanguagesui button.no {
+  background-color: #bdc3c7;
+}
+.acceptedlanguagesui button.yes {
+  background-color: #27ae60;
 }
 
 /* animation: slideIn */
@@ -54,8 +56,8 @@
           animation: slideIn ease-in 1;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
   -webkit-animation-duration: 0.2s;
           animation-duration: 0.2s;
 }

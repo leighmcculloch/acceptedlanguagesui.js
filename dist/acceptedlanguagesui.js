@@ -65,7 +65,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _acceptedlanguagesuiRoot = __webpack_require__(1);
 
-	var rooter = _interopRequireWildcard(_acceptedlanguagesuiRoot);
+	var rootManager = _interopRequireWildcard(_acceptedlanguagesuiRoot);
+
+	var _acceptedlanguagesuiLocalStorage = __webpack_require__(2);
+
+	var localStorageManager = _interopRequireWildcard(_acceptedlanguagesuiLocalStorage);
 
 	var page = acceptedlanguages.lib.page;
 	var relevant = acceptedlanguages.lib.relevant;
@@ -73,7 +77,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function createButton(text, cssClass) {
 	  var button = document.createElement('button');
 	  button.setAttribute('type', 'button');
-	  button.setAttribute('cssClass', cssClass);
+	  button.className = cssClass;
 	  button.innerHTML = text;
 	  return button;
 	}
@@ -102,7 +106,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _ref$linkAttributeForNo = _ref.linkAttributeForNo;
 	  var linkAttributeForNo = _ref$linkAttributeForNo === undefined ? 'data-no' : _ref$linkAttributeForNo;
 
-	  var root = rooter.getRoot();
+	  var root = rootManager.getRoot();
+	  var localStorage = localStorageManager.getLocalStorage();
+
+	  if (localStorage.acceptedLanguagesUIDismissedWithNo) {
+	    return;
+	  }
 
 	  var currentLanguage = page.getCurrentLanguage();
 	  var relevantLanguage = relevant.getRelevantAlternateLanguages()[0];
@@ -123,13 +132,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  element.className = elementClass + ' ' + elementClassShow;
 	  element.innerHTML = '' + message;
 
-	  var buttonNo = createButton(no, href, buttonNoClass);
+	  var buttonNo = createButton(no, buttonNoClass);
 	  buttonNo.onclick = function () {
 	    element.className = elementClass + ' ' + elementClassHide;
+	    localStorage.acceptedLanguagesUIDismissedWithNo = true;
 	  };
 	  element.appendChild(buttonNo);
 
-	  var buttonYes = createButton(yes, href, buttonYesClass);
+	  var buttonYes = createButton(yes, buttonYesClass);
 	  buttonYes.onclick = function () {
 	    window.location.href = href;
 	  };
@@ -166,6 +176,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	function setRoot(newRoot) {
 	  root = newRoot;
 	}
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getLocalStorage = getLocalStorage;
+	exports.setLocalStorage = setLocalStorage;
+	function getBrowserLocalStorage() {
+	  if (typeof Storage === "undefined") {
+	    return null;
+	  }
+	  return window.localStorage;
+	}
+
+	var localStorage = getBrowserLocalStorage() || {};
+
+	function getLocalStorage() {
+	  return localStorage;
+	}
+
+	;
+
+	function setLocalStorage(_localStorage) {
+	  localStorage = _localStorage;
+	}
+
+	;
 
 /***/ }
 /******/ ])

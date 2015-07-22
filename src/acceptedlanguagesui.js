@@ -1,4 +1,5 @@
-import * as rooter from 'acceptedlanguagesui-root';
+import * as rootManager from 'acceptedlanguagesui-root';
+import * as localStorageManager from 'acceptedlanguagesui-localStorage';
 
 var page = acceptedlanguages.lib.page;
 var relevant = acceptedlanguages.lib.relevant;
@@ -6,7 +7,7 @@ var relevant = acceptedlanguages.lib.relevant;
 function createButton(text, cssClass) {
   var button = document.createElement('button');
   button.setAttribute('type', 'button');
-  button.setAttribute('cssClass', cssClass);
+  button.className = cssClass;
   button.innerHTML = text;
   return button;
 }
@@ -23,7 +24,12 @@ export function display({
   linkAttributeForYes = 'data-yes',
   linkAttributeForNo = 'data-no'
 } = {}) {
-  var root = rooter.getRoot();
+  var root = rootManager.getRoot();
+  var localStorage = localStorageManager.getLocalStorage();
+
+  if (localStorage.acceptedLanguagesUIDismissedWithNo) {
+    return;
+  }
 
   var currentLanguage = page.getCurrentLanguage();
   var relevantLanguage = relevant.getRelevantAlternateLanguages()[0];
@@ -44,13 +50,14 @@ export function display({
   element.className = `${elementClass} ${elementClassShow}`;
   element.innerHTML = `${message}`;
 
-  var buttonNo = createButton(no, href, buttonNoClass);
+  var buttonNo = createButton(no, buttonNoClass);
   buttonNo.onclick = function() {
     element.className = `${elementClass} ${elementClassHide}`;
+    localStorage.acceptedLanguagesUIDismissedWithNo = true;
   };
   element.appendChild(buttonNo);
 
-  var buttonYes = createButton(yes, href, buttonYesClass);
+  var buttonYes = createButton(yes, buttonYesClass);
   buttonYes.onclick = function() {
     window.location.href = href;
   };

@@ -1,3 +1,9 @@
+$color-background: black;
+$color-foreground: white;
+$color-foreground-shadow: rgba(0, 0, 0, 0.25);
+$color-no: #bdc3c7;
+$color-yes: #27ae60;
+
 .acceptedlanguagesui {
   position: absolute;
   top: 0;
@@ -8,23 +14,25 @@
   padding: 8px;
   width: 100%;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid rgba(200, 200, 200, 0.999);
-  box-shadow: 0 1px 5px rgba(200, 200, 200, 0.999);
-
-  a {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+  background: rgba($color-background, 0.8);
+  color: $color-foreground;
 
   button {
     display: inline-block;
     margin-left: 8px;
     font-size: inherit;
+    border: 0;
+    cursor: pointer;
+    color: $color-foreground;
+    text-shadow: 0 1px 1px $color-foreground-shadow;
+
+    &.no {
+      background-color: $color-no;
+    }
+
+    &.yes {
+      background-color: $color-yes;
+    }
   }
 
   &.show {
@@ -45,7 +53,7 @@
   transform: translateY(-100%);
   animation: slideIn ease-in 1;
   animation-fill-mode: forwards;
-  animation-delay: 0.3s;
+  animation-delay: 0s;
   animation-duration: 0.2s;
 }
 
