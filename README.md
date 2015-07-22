@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/leighmcculloch/acceptedlanguagesui.js.svg?branch=master)](https://travis-ci.org/leighmcculloch/acceptedlanguagesui.js)
 
-A simple JavaScript library that displays a `div` that exposes the accepted languages of the visitor configured in their browser, and the languages relevant given the languages that the current page is alternatively available in.
+A simple JavaScript library that displays a `div` that offers the user the web page in one of it's alternate languages based off the visitors accepted languages.
 
 Dependent on [acceptedlanguages.js](https://github.com/leighmcculloch/acceptedlanguages.js).
 
