@@ -6,6 +6,8 @@ A simple JavaScript library that displays a `div` that exposes the accepted lang
 
 Dependent on [acceptedlanguages.js](https://github.com/leighmcculloch/acceptedlanguages.js).
 
+![](README-screenshot.png)
+
 ## Install
 
 ### Bower
