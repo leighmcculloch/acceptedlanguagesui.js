@@ -5,7 +5,7 @@ function getBrowserLocalStorage() {
   return window.localStorage;
 }
 
-var localStorage = getBrowserLocalStorage() || {};
+var localStorage = getBrowserLocalStorage();
 
 export function getLocalStorage() {
   return localStorage;

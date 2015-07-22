@@ -27,7 +27,7 @@ export function display({
   var root = rootManager.getRoot();
   var localStorage = localStorageManager.getLocalStorage();
 
-  if (localStorage.acceptedLanguagesUIDismissedWithNo) {
+  if (!localStorage || localStorage.acceptedLanguagesUIDismissedWithNo) {
     return;
   }
 
