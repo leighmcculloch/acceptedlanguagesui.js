@@ -4,6 +4,8 @@
 
 A simple JavaScript library that displays a `div` that offers the user the web page in one of it's alternate languages based off the visitors accepted languages.
 
+This library does not translate your website, and only offers alternate versions of your website, as defined by `link` tags in the `head` of your web page. See the usage below for an example.
+
 Dependent on [acceptedlanguages.js](https://github.com/leighmcculloch/acceptedlanguages.js).
 
 ![](README-screenshot.png)
