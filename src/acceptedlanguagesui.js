@@ -22,12 +22,13 @@ export function display({
   buttonNoClass = 'no',
   linkAttributeForMessage = 'data-message',
   linkAttributeForYes = 'data-yes',
-  linkAttributeForNo = 'data-no'
+  linkAttributeForNo = 'data-no',
+  showAlways = false
 } = {}) {
   var root = rootManager.getRoot();
   var localStorage = localStorageManager.getLocalStorage();
 
-  if (!localStorage || localStorage.acceptedLanguagesUIDismissedWithNo) {
+  if (!showAlways || !localStorage || localStorage.acceptedLanguagesUIDismissedWithNo) {
     return;
   }
 
