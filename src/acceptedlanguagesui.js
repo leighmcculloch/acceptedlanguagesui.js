@@ -24,7 +24,10 @@ export function init({
   linkAttributeForMessage = 'data-message',
   linkAttributeForYes = 'data-yes',
   linkAttributeForNo = 'data-no',
-  showAlways = false
+  showAlways = false,
+  onShow = function() {},
+  onYes = function() {},
+  onNo = function() {}
 } = {}) {
   var root = rootManager.getRoot();
   var localStorage = localStorageManager.getLocalStorage();
@@ -52,17 +55,27 @@ export function init({
   element.innerHTML = `${message}`;
 
   var buttonNo = createButton(no, buttonNoClass);
-  buttonNo.onclick = function() {
+  buttonNo.onclick = function(ev) {
+    if (onNo(ev) === false || ev.defaultPrevented) {
+      return;
+    }
     element.className = `${elementClass} ${elementClassHide}`;
     localStorage.acceptedLanguagesUIDismissedWithNo = true;
   };
   element.appendChild(buttonNo);
 
   var buttonYes = createButton(yes, buttonYesClass);
-  buttonYes.onclick = function() {
+  buttonYes.onclick = function(ev) {
+    if (onYes(ev) === false || ev.defaultPrevented) {
+      return;
+    }
     window.location.href = href;
   };
   element.appendChild(buttonYes);
+
+  if (onShow(element) === false) {
+    return;
+  }
 
   var elementToInsertInto = document.querySelector(insertElementIntoSelector);
   if (elementToInsertInto) {
