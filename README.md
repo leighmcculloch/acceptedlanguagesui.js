@@ -2,11 +2,15 @@
 
 [![Build Status](https://travis-ci.org/leighmcculloch/acceptedlanguagesui.js.svg?branch=master)](https://travis-ci.org/leighmcculloch/acceptedlanguagesui.js)
 
-A simple JavaScript library that displays a `div` that offers the user the web page in one of it's alternate languages based off the visitors accepted languages.
+A simple JavaScript library that asks the visitor if they'd like to view the current page in one of it's alternate languages, if the users browser indicates another language is preferred.
 
-This library does not translate your website, and only offers alternate versions of your website, as defined by `link` tags in the `head` of your web page. See the usage below for an example.
+This library does not translate your website, but offers the alternate versions of your website, as defined by `<link rel="alternate" hreflang="es" href="..." />` tags in the `<head>` of your web page. See the usage below for an example.
 
-Dependent on [acceptedlanguages.js](https://github.com/leighmcculloch/acceptedlanguages.js).
+Uses [acceptedlanguages.js](https://github.com/leighmcculloch/acceptedlanguages.js) to discover the users accepted languages and the pages alternate languages.
+
+## Why
+
+Language dropdowns are often placed below the fold or in inconspicuous locations of a web page. Including this library into a web page invites the visitor to switch quickly to their preferred language without requiring them to discover the language drop down.
 
 ## Example
 
