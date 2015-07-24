@@ -13,6 +13,7 @@ function createButton(text, cssClass) {
 }
 
 export function display({
+  elementInsertIntoSelector = 'body',
   elementTag = 'div',
   elementId = 'acceptedlanguagesui',
   elementClass = 'acceptedlanguagesui',
@@ -44,7 +45,6 @@ export function display({
   var no = link.getAttribute(linkAttributeForNo);
 
   var document = root.document;
-  var body = document.body;
 
   var element = document.querySelector(`#${elementId}`) || document.createElement(elementTag);
   element.setAttribute('id', elementId);
@@ -64,9 +64,12 @@ export function display({
   };
   element.appendChild(buttonYes);
 
-  if (body.hasChildNodes()) {
-    body.insertBefore(element, body.firstChild);
-  } else {
-    body.appendChild(element);
+  var elementToInsertInto = document.querySelector(elementInsertIntoSelector);
+  if (elementToInsertInto) {
+    if (elementToInsertInto.hasChildNodes()) {
+      elementToInsertInto.insertBefore(element, elementToInsertInto.firstChild);
+    } else {
+      elementToInsertInto.appendChild(element);
+    }
   }
 };
