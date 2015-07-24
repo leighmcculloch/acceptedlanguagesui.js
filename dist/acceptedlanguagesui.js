@@ -85,6 +85,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function display() {
 	  var _ref = arguments[0] === undefined ? {} : arguments[0];
 
+	  var _ref$elementInsertIntoSelector = _ref.elementInsertIntoSelector;
+	  var elementInsertIntoSelector = _ref$elementInsertIntoSelector === undefined ? 'body' : _ref$elementInsertIntoSelector;
 	  var _ref$elementTag = _ref.elementTag;
 	  var elementTag = _ref$elementTag === undefined ? 'div' : _ref$elementTag;
 	  var _ref$elementId = _ref.elementId;
@@ -105,11 +107,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var linkAttributeForYes = _ref$linkAttributeForYes === undefined ? 'data-yes' : _ref$linkAttributeForYes;
 	  var _ref$linkAttributeForNo = _ref.linkAttributeForNo;
 	  var linkAttributeForNo = _ref$linkAttributeForNo === undefined ? 'data-no' : _ref$linkAttributeForNo;
+	  var _ref$showAlways = _ref.showAlways;
+	  var showAlways = _ref$showAlways === undefined ? false : _ref$showAlways;
 
 	  var root = rootManager.getRoot();
 	  var localStorage = localStorageManager.getLocalStorage();
 
-	  if (localStorage.acceptedLanguagesUIDismissedWithNo) {
+	  if (!showAlways && (!localStorage || localStorage.acceptedLanguagesUIDismissedWithNo)) {
 	    return;
 	  }
 
@@ -125,7 +129,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var no = link.getAttribute(linkAttributeForNo);
 
 	  var document = root.document;
-	  var body = document.body;
 
 	  var element = document.querySelector('#' + elementId) || document.createElement(elementTag);
 	  element.setAttribute('id', elementId);
@@ -145,10 +148,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	  element.appendChild(buttonYes);
 
-	  if (body.hasChildNodes()) {
-	    body.insertBefore(element, body.firstChild);
-	  } else {
-	    body.appendChild(element);
+	  var elementToInsertInto = document.querySelector(elementInsertIntoSelector);
+	  if (elementToInsertInto) {
+	    if (elementToInsertInto.hasChildNodes()) {
+	      elementToInsertInto.insertBefore(element, elementToInsertInto.firstChild);
+	    } else {
+	      elementToInsertInto.appendChild(element);
+	    }
 	  }
 	}
 
@@ -195,7 +201,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return window.localStorage;
 	}
 
-	var localStorage = getBrowserLocalStorage() || {};
+	var localStorage = getBrowserLocalStorage();
 
 	function getLocalStorage() {
 	  return localStorage;
