@@ -8,6 +8,10 @@ This library does not translate your website, and only offers alternate versions
 
 Dependent on [acceptedlanguages.js](https://github.com/leighmcculloch/acceptedlanguages.js).
 
+## Example
+
+See the [example](example/).
+
 ![](README-screenshot.png)
 
 ## Install
