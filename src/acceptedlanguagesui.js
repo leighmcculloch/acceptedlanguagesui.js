@@ -13,7 +13,7 @@ function createButton(text, cssClass) {
 }
 
 export function display({
-  elementInsertIntoSelector = 'body',
+  insertElementIntoSelector = 'body',
   elementTag = 'div',
   elementId = 'acceptedlanguagesui',
   elementClass = 'acceptedlanguagesui',
@@ -64,7 +64,7 @@ export function display({
   };
   element.appendChild(buttonYes);
 
-  var elementToInsertInto = document.querySelector(elementInsertIntoSelector);
+  var elementToInsertInto = document.querySelector(insertElementIntoSelector);
   if (elementToInsertInto) {
     if (elementToInsertInto.hasChildNodes()) {
       elementToInsertInto.insertBefore(element, elementToInsertInto.firstChild);
