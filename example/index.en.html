@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <title>acceptedlanguagesui.js example</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../dist/acceptedlanguagesui.css" />
+
+  <link rel="alternate" hreflang="en-AU" href="index.en.html" data-message="View this page in English?" data-yes="Yes" data-no="No" />
+  <link rel="alternate" hreflang="pt-BR" href="index.pt.html" data-message="View this page in Português brasileiro?" data-yes="Yes" data-no="No" />
+  <link rel="alternate" hreflang="es-419" href="index.es.html" data-message="View this page in Español?" data-yes="Yes" data-no="No" />
+
+  <script type="text/javascript" src="../node_modules/acceptedlanguages/dist/acceptedlanguages.js"></script>
+  <script type="text/javascript" src="../dist/acceptedlanguagesui.js"></script>
+  <script type="text/javascript">
+    window.onload = function() {
+      acceptedlanguagesui.display();
+    };
+  </script>
+</head>
+<body>
+
+  <h1>acceptedlanguagesui example</h1>
+
+  <p>The acceptedlanguagesui library inserts an element into the page, at the top of the page by default, inviting the visitor to view this page in a language that is preferred by them. Change your browser's language to see how it affects which language gets offered to you on load.</p>
+
+  <p>If you don't see the invitation at the top of this page, it's because you're viewing the page in a language you already prefer.</p>
+
+  <p>If the visitor selects <code>No</code>, the decision will be remembered and they won't be asked again. If you'd like to try again clear your browsers Local Storage.</p>
+
+  <p>If the visitor selects <code>Yes</code>, they are redirected to the URL in the <code>href</code> attribute of the alternate <code>&lt;link&gt;</code> in the <code>&lt;head&gt;</code> of the page matching the language.</p>
+
+  <p>
+    Note: This page is viewable in
+    <a href="index.en.html">en-AU</a>,
+    <a href="index.es.html">es-419</a>,
+    <a href="index.pt.html">pt-BR</a>.
+  </p>
+
+</body>
+</html>
