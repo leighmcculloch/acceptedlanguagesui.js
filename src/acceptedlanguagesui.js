@@ -12,7 +12,7 @@ function createButton(text, cssClass) {
   return button;
 }
 
-export function display({
+export function init({
   insertElementIntoSelector = 'body',
   elementTag = 'div',
   elementId = 'acceptedlanguagesui',

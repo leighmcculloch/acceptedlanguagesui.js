@@ -40,7 +40,7 @@ Download [acceptedlanguages.min.js](https://github.com/leighmcculloch/acceptedla
 
 ### Globals
 
-Include `acceptedlanguages.js` and `acceptedlanguagesui.js` into the page and call `display`.
+Include `acceptedlanguages.js` and `acceptedlanguagesui.js` into the page and call `init`.
 
 ```html
 <html lang="en">
@@ -52,7 +52,7 @@ Include `acceptedlanguages.js` and `acceptedlanguagesui.js` into the page and ca
     <script src="acceptedlanguagesui.js"></script>
     <script type="text/javascript">
       window.onload = function() {
-        acceptedlanguagesui.display();
+        acceptedlanguagesui.init();
       };
     </script>
   </head>
