@@ -59,7 +59,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
-	exports.display = display;
+	exports.init = init;
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
@@ -82,11 +82,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return button;
 	}
 
-	function display() {
+	function init() {
 	  var _ref = arguments[0] === undefined ? {} : arguments[0];
 
-	  var _ref$elementInsertIntoSelector = _ref.elementInsertIntoSelector;
-	  var elementInsertIntoSelector = _ref$elementInsertIntoSelector === undefined ? 'body' : _ref$elementInsertIntoSelector;
+	  var _ref$insertElementIntoSelector = _ref.insertElementIntoSelector;
+	  var insertElementIntoSelector = _ref$insertElementIntoSelector === undefined ? 'body' : _ref$insertElementIntoSelector;
 	  var _ref$elementTag = _ref.elementTag;
 	  var elementTag = _ref$elementTag === undefined ? 'div' : _ref$elementTag;
 	  var _ref$elementId = _ref.elementId;
@@ -109,6 +109,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var linkAttributeForNo = _ref$linkAttributeForNo === undefined ? 'data-no' : _ref$linkAttributeForNo;
 	  var _ref$showAlways = _ref.showAlways;
 	  var showAlways = _ref$showAlways === undefined ? false : _ref$showAlways;
+	  var _ref$onShow = _ref.onShow;
+	  var onShow = _ref$onShow === undefined ? function () {} : _ref$onShow;
+	  var _ref$onYes = _ref.onYes;
+	  var onYes = _ref$onYes === undefined ? function () {} : _ref$onYes;
+	  var _ref$onNo = _ref.onNo;
+	  var onNo = _ref$onNo === undefined ? function () {} : _ref$onNo;
 
 	  var root = rootManager.getRoot();
 	  var localStorage = localStorageManager.getLocalStorage();
@@ -136,19 +142,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	  element.innerHTML = '' + message;
 
 	  var buttonNo = createButton(no, buttonNoClass);
-	  buttonNo.onclick = function () {
+	  buttonNo.onclick = function (ev) {
+	    if (onNo(ev) === false || ev.defaultPrevented) {
+	      return;
+	    }
 	    element.className = elementClass + ' ' + elementClassHide;
 	    localStorage.acceptedLanguagesUIDismissedWithNo = true;
 	  };
 	  element.appendChild(buttonNo);
 
 	  var buttonYes = createButton(yes, buttonYesClass);
-	  buttonYes.onclick = function () {
+	  buttonYes.onclick = function (ev) {
+	    if (onYes(ev) === false || ev.defaultPrevented) {
+	      return;
+	    }
 	    window.location.href = href;
 	  };
 	  element.appendChild(buttonYes);
 
-	  var elementToInsertInto = document.querySelector(elementInsertIntoSelector);
+	  if (onShow(element) === false) {
+	    return;
+	  }
+
+	  var elementToInsertInto = document.querySelector(insertElementIntoSelector);
 	  if (elementToInsertInto) {
 	    if (elementToInsertInto.hasChildNodes()) {
 	      elementToInsertInto.insertBefore(element, elementToInsertInto.firstChild);
