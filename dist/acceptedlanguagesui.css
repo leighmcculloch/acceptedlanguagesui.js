@@ -3,12 +3,12 @@
   top: 0;
   left: 0;
   z-index: 99999;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: inherit;
   font-size: 1em;
   padding: 8px;
   width: 100%;
   text-align: center;
-  background: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
 }
 .acceptedlanguagesui button {
