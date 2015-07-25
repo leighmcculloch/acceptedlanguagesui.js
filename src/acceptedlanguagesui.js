@@ -56,7 +56,7 @@ export function init({
 
   var buttonNo = createButton(no, buttonNoClass);
   buttonNo.onclick = function(ev) {
-    if (onNo(ev) === false || ev.defaultPrevented) {
+    if (onNo(ev, currentLanguage, relevantLanguage) === false || ev.defaultPrevented) {
       return;
     }
     element.className = `${elementClass} ${elementClassHide}`;
@@ -66,14 +66,14 @@ export function init({
 
   var buttonYes = createButton(yes, buttonYesClass);
   buttonYes.onclick = function(ev) {
-    if (onYes(ev) === false || ev.defaultPrevented) {
+    if (onYes(ev, currentLanguage, relevantLanguage) === false || ev.defaultPrevented) {
       return;
     }
     window.location.href = href;
   };
   element.appendChild(buttonYes);
 
-  if (onShow(element) === false) {
+  if (onShow(element, currentLanguage, relevantLanguage) === false) {
     return;
   }
 
