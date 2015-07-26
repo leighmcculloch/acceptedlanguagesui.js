@@ -52,7 +52,10 @@ export function init({
   var element = document.querySelector(`#${elementId}`) || document.createElement(elementTag);
   element.setAttribute('id', elementId);
   element.className = `${elementClass} ${elementClassShow}`;
-  element.innerHTML = `${message}`;
+
+  var text = document.createElement('span')
+  text.innerHTML = `${message}`;
+  element.appendChild(text);
 
   var buttonNo = createButton(no, buttonNoClass);
   buttonNo.onclick = function(ev) {
