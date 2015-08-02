@@ -14,9 +14,10 @@ Language dropdowns are often placed below the fold or in inconspicuous locations
 
 ## Example
 
-See the [example](example/).
+See the [example](example/) or see it in use on [Great Stories](https://greatstories.cn/the_lost_son).
 
-![](README-screenshot.png)
+<img src="README-screenshot-1.png" width="350" />
+<img src="README-screenshot-2.png" width="350" />
 
 ## Install
 
