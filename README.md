@@ -1,7 +1,5 @@
 # acceptedlanguagesui.js
 
-[![Build Status](https://travis-ci.org/leighmcculloch/acceptedlanguagesui.js.svg?branch=master)](https://travis-ci.org/leighmcculloch/acceptedlanguagesui.js)
-
 A simple JavaScript library that asks the visitor if they'd like to view the current page in one of it's alternate languages, if the their browser indicates another language is preferred.
 
 This library does not translate your website, but offers the alternate versions of your website, as defined by `<link rel="alternate" hreflang="es" href="..." />` tags in the `<head>` of your web page. See the usage below for an example.
