@@ -2,13 +2,13 @@
 
 A simple JavaScript library that asks the visitor if they'd like to view the current page in one of it's alternate languages, if the their browser indicates another language is preferred.
 
-This library does not translate your website, but offers the alternate versions of your website, as defined by `<link rel="alternate" hreflang="es" href="..." />` tags in the `<head>` of your web page. See the usage below for an example.
+This library does not translate your website, but offers the alternate versions of your website, as defined by `<link rel="alternate" hreflang="es" href="..." />` tags in the `<head>` of your web page.
 
 Uses [acceptedlanguages.js](https://github.com/leighmcculloch/acceptedlanguages.js) to discover the users accepted languages and the pages alternate languages.
 
 ## Why
 
-Language dropdowns are often placed below the fold or in inconspicuous locations of a web page. Including this library into a web page invites the visitor to switch quickly to their preferred language without requiring them to discover the language drop down.
+Language dropdowns are often placed below the fold or in inconspicuous locations. Include this library and your visitors will be invited to switch to their preferred language without requiring them to discover the language drop down.
 
 ## Example
 
