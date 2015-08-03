@@ -78,3 +78,11 @@ All browsers supporting ECMAScript 5: Chrome, Safari, Firefox, IE9, etc. If you 
 * `Array.forEach`
 * `Array.filter`
 * `Array.map`
+
+## Why not just redirect?
+
+Redirections are an easy way to get a user to what you think is their preferred language, but can result in confusing or frustrating your visitors. Auto-redirects act on assumptions about the visitor, where-as acceptedlanguagesui.js looks at the assumptions and educates the user that the website is available in their language.
+
+## Why not just serve the page in the different language on the same URL?
+
+Google and other search engines will index your page based on it's URL. If you serve your content in multiple languages on the same URL, then Google will store one but unlikely all of them. You may only be reaching one language worth of your visitors via search engines in this case. See [Google's article](https://support.google.com/webmasters/answer/189077) about how to setup a multilanguage website for the best search outcome.
