@@ -72,6 +72,25 @@ define(['acceptedlanguagesui'], function(acceptedLanguagesUI) {
 });
 ```
 
+## Analytics
+
+It's possible to hook in analytics to track when acceptedlanguagesui is displaying and being used/discarded. Use the `onShow`, `onYes`, and `onNo` callbacks and then trigger your analytics library with the event. Here's an example of how to integrate with Google Analytics.
+
+```javascript
+acceptedlanguagesui.init({
+  insertElementIntoSelector: '.side-menu-view-container',
+  onShow: function(element, currentLanguage, relevantLanguage) {
+    ga('send', 'event', 'acceptedlanguagesui', 'show', currentLanguage + '→' + relevantLanguage, {'nonInteraction': 1});
+  },
+  onYes: function(ev, currentLanguage, relevantLanguage) {
+    ga('send', 'event', 'acceptedlanguagesui', 'yes', currentLanguage + '→' + relevantLanguage);
+  },
+  onNo: function(ev, currentLanguage, relevantLanguage) {
+    ga('send', 'event', 'acceptedlanguagesui', 'no', currentLanguage + '→' + relevantLanguage);
+  },
+});
+```
+
 ## Browser Compatibility
 
 All browsers supporting ECMAScript 5: Chrome, Safari, Firefox, IE9, etc. If you need to support older browsers use [es5-shims](https://github.com/es-shims/es5-shim) to get the following:
