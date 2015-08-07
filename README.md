@@ -68,7 +68,7 @@ Include the library and then use as a dependency:
 
 ```javascript
 define(['acceptedlanguagesui'], function(acceptedLanguagesUI) {
-  acceptedlanguagesui.display();
+  acceptedlanguagesui.init();
 });
 ```
 
